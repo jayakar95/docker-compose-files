@@ -36,7 +36,7 @@ services:
         source: influxdb2-config
         target: /etc/influxdb2
   hivemq:
-    image: hivemq/hivemq-ce
+    image: hivemq/hivemq-ce:2025.1
     container_name: hivemq
     restart: unless-stopped
     ports:

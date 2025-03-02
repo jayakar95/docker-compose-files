@@ -35,6 +35,20 @@ services:
       - type: volume
         source: influxdb2-config
         target: /etc/influxdb2
+  hivemq:
+    image: hivemq/hivemq4
+    container_name: hivemq
+    restart: unless-stopped
+    ports:
+      - "1883:1883"   # MQTT port
+      - "8080:8080"   # Web UI (if applicable)
+      - "8883:8883"   # Secure MQTT (SSL/TLS)
+      - "8443:8443"   # WebSocket Secure
+    volumes:
+      - hivemq-data:/opt/hivemq/data
+      - hivemq-config:/opt/hivemq/conf
+    environment:
+      - HIVEMQ_ALLOW_ANONYMOUS=true
 secrets:
   influxdb2-admin-username:
     external: true
@@ -45,3 +59,5 @@ secrets:
 volumes:
   influxdb2-data:
   influxdb2-config:
+  hivemq-data:
+  hivemq-config:

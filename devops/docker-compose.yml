@@ -40,8 +40,8 @@ services:
     container_name: hivemq
     restart: unless-stopped
     ports:
-      - "1883:1883"   # MQTT port
-      - "8080:8080"   # Web UI (if applicable)
+      - 1883:1883   # MQTT port
+      - 8080:8080   # Web UI (if applicable)
       - "8883:8883"   # Secure MQTT (SSL/TLS)
       - "8443:8443"   # WebSocket Secure
     volumes:
